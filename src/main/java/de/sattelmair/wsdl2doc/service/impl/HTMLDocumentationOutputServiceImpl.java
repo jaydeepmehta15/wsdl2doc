@@ -7,6 +7,7 @@ public class HTMLDocumentationOutputServiceImpl implements DocumentationOutputSe
 
     @Override
     public byte[] createDocumentation(final Description serviceDescription) {
+
         return new byte[0];
     }
 }
