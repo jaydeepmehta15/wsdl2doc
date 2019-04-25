@@ -35,7 +35,7 @@ public class ApplicationMainProcessorServiceImpl implements ApplicationMainProce
         try {
             Files.write(new File(createFilePath(args[1], OutputFormat.getExtension(outputFormat))).toPath(), generatedDocumentation);
         } catch (IOException e) {
-            new RuntimeException("Error while writing output file", e);
+            throw new RuntimeException("Error while writing output file", e);
         }
     }
 
