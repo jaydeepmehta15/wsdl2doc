@@ -21,8 +21,8 @@ public class ApplicationMainProcessorServiceImpl implements ApplicationMainProce
         if(args.length < 2 || args.length > 3) {
             throw new IllegalArgumentException("Worng number if input parameters! Usage must be as follows:" +
                     "\n\t- First parameter: Either a URL or a file path to a WSDL \t(mandatory)" +
-                    "\n\t- Second parameter: Output file path \t(mandatory)" +
-                    "\n\t- Third parameter: Desired output format (e.g. PDF, HTML, etc.) \t(optional)");
+                    "\n\t- Second parameter: Path to output directory \t(mandatory)" +
+                    "\n\t- Third parameter: Desired output format (e.g. PDF, HTML, etc.) \t(optional, default is PDF)");
         }
 
         final String outputFormat = args.length == 3 && StringUtils.isNotBlank(args[2]) ? args[2] : OutputFormat.PDF.name();
@@ -33,7 +33,7 @@ public class ApplicationMainProcessorServiceImpl implements ApplicationMainProce
         }
 
         try {
-            Files.write(new File(args[1]).toPath(), generatedDocumentation);
+            Files.write(new File(createFilePath(args[1], OutputFormat.getExtension(outputFormat))).toPath(), generatedDocumentation);
         } catch (IOException e) {
             new RuntimeException("Error while writing output file", e);
         }
@@ -80,6 +80,10 @@ public class ApplicationMainProcessorServiceImpl implements ApplicationMainProce
         }
 
         return true;
+    }
+
+    private String createFilePath(final String directory, final String extension) {
+        return directory + "generated_documentation_" + System.currentTimeMillis() + "." + extension;
     }
 
 }
