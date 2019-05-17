@@ -4,6 +4,6 @@ import org.ow2.easywsdl.wsdl.api.Description;
 
 public interface DocumentationOutputService {
 
-    byte[] createDocumentation(final Description serviceDescription);
+    byte[] generateDocumentation(final Description serviceDescription);
 
 }

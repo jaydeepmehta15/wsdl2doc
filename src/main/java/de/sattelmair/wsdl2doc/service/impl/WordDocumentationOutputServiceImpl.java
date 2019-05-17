@@ -6,7 +6,7 @@ import org.ow2.easywsdl.wsdl.api.Description;
 public class WordDocumentationOutputServiceImpl implements DocumentationOutputService {
 
     @Override
-    public byte[] createDocumentation(Description serviceDescription) {
+    public byte[] generateDocumentation(Description serviceDescription) {
         return new byte[0];
     }
 }

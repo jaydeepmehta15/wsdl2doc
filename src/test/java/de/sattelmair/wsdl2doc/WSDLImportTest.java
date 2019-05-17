@@ -23,6 +23,6 @@ public class WSDLImportTest {
 
         final DocumentationOutputService documentationOutputService = new MarkdownDocumentationOutputServiceImpl();
         File file = new File("src/test/resources/de/sattelmair/wsdl2doc/output/output.md");
-        Files.write(file.toPath(), documentationOutputService.createDocumentation(description));
+        Files.write(file.toPath(), documentationOutputService.generateDocumentation(description));
     }
 }

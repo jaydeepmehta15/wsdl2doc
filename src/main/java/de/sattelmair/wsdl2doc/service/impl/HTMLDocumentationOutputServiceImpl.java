@@ -6,7 +6,7 @@ import org.ow2.easywsdl.wsdl.api.Description;
 public class HTMLDocumentationOutputServiceImpl implements DocumentationOutputService {
 
     @Override
-    public byte[] createDocumentation(final Description serviceDescription) {
+    public byte[] generateDocumentation(final Description serviceDescription) {
 
         return new byte[0];
     }

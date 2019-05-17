@@ -3,6 +3,7 @@ package de.sattelmair.wsdl2doc.service.impl;
 import de.sattelmair.wsdl2doc.domain.OutputFormat;
 import de.sattelmair.wsdl2doc.service.ApplicationMainProcessorService;
 import de.sattelmair.wsdl2doc.service.WSDL2DocService;
+import org.apache.commons.cli.*;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.validator.routines.UrlValidator;
 import org.ow2.easywsdl.wsdl.api.WSDLImportException;
@@ -13,30 +14,71 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.text.MessageFormat;
+import java.util.Arrays;
 
 public class ApplicationMainProcessorServiceImpl implements ApplicationMainProcessorService {
 
+    private static final String INPUT_SOURCE_OPTION = "input_source";
+    private static final String OUTPUT_PATH = "output_path";
+    private static final String OUTPUT_FORMAT = "output_format";
+
     @Override
     public void process(final String[] args) {
-        if(args.length < 2 || args.length > 3) {
-            throw new IllegalArgumentException("Worng number if input parameters! Usage must be as follows:" +
-                    "\n\t- First parameter: Either a URL or a file path to a WSDL \t(mandatory)" +
-                    "\n\t- Second parameter: Path to output directory \t(mandatory)" +
-                    "\n\t- Third parameter: Desired output format (e.g. PDF, HTML, etc.) \t(optional, default is PDF)");
+        final CommandLine commandLine = parseInput(createOptions(), args);
+
+        final String outputFormat = commandLine.hasOption(OUTPUT_FORMAT) &&
+                StringUtils.isNotBlank(commandLine.getOptionValue(OUTPUT_FORMAT)) ? commandLine.getOptionValue(OUTPUT_FORMAT) : OutputFormat.PDF.name();
+
+        if(!canWriteFile(commandLine.getOptionValue(OUTPUT_FORMAT))) {
+            throw new IllegalArgumentException(MessageFormat.format("Can not write file to given file path {0}!!", commandLine.getOptionValue(OUTPUT_PATH)));
         }
 
-        final String outputFormat = args.length == 3 && StringUtils.isNotBlank(args[2]) ? args[2] : OutputFormat.PDF.name();
-        final byte[] generatedDocumentation = generateDocumentationOutput(args[0], outputFormat);
-
-        if(!canWriteFile(args[1])) {
-            throw new IllegalArgumentException(MessageFormat.format("Can not write file to given file path {0}!!", args[1]));
-        }
+        final byte[] generatedDocumentation = generateDocumentationOutput(commandLine.getOptionValue(INPUT_SOURCE_OPTION), outputFormat);
 
         try {
-            Files.write(new File(createFilePath(args[1], OutputFormat.getExtension(outputFormat))).toPath(), generatedDocumentation);
+            Files.write(new File(createFilePath(commandLine.getOptionValue(OUTPUT_PATH), OutputFormat.getExtension(outputFormat))).toPath(), generatedDocumentation);
         } catch (IOException e) {
             throw new RuntimeException("Error while writing output file", e);
         }
+    }
+
+    private CommandLine parseInput(final Options options, final String[] input) {
+        try {
+            return new DefaultParser().parse(options, input);
+        } catch (ParseException parseException) {
+            throw new RuntimeException("ERROR: Unable to parse command-line arguments "
+                    + Arrays.toString(input) + " due to: "
+                    + parseException);
+        }
+    }
+
+    private Options createOptions() {
+        final Option inputSourceOption = Option.builder("i")
+                .required()
+                .hasArg()
+                .longOpt(INPUT_SOURCE_OPTION)
+                .desc("Either a URL or a file path to a WSDL")
+                .build();
+
+        final Option outputPathOption = Option.builder("o")
+                .required()
+                .hasArg()
+                .longOpt(OUTPUT_PATH)
+                .desc("Path to output directory")
+                .build();
+
+        final Option formatOption = Option.builder("f")
+                .required(false)
+                .hasArg()
+                .longOpt(OUTPUT_FORMAT)
+                .desc("Desired output format (e.g. PDF, HTML, etc.)")
+                .build();
+
+        final Options options = new Options();
+        options.addOption(inputSourceOption);
+        options.addOption(outputPathOption);
+        options.addOption(formatOption);
+        return options;
     }
 
     private byte[] generateDocumentationOutput(final String filePathOrURL, final String outputFormat) {

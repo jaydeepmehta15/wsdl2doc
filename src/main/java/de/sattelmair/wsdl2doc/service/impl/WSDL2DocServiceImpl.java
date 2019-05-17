@@ -22,7 +22,7 @@ public class WSDL2DocServiceImpl implements WSDL2DocService {
         final DocumentationOutputService documentationOutputService =
                 DocumentationOutputServiceFactory.createDocumentationOutputService(OutputFormat.getOutputFormat(outputFormat));
 
-        return documentationOutputService.createDocumentation(description);
+        return documentationOutputService.generateDocumentation(description);
     }
 
     @Override
@@ -33,7 +33,7 @@ public class WSDL2DocServiceImpl implements WSDL2DocService {
         final DocumentationOutputService documentationOutputService =
                 DocumentationOutputServiceFactory.createDocumentationOutputService(OutputFormat.getOutputFormat(outputFormat));
 
-        return documentationOutputService.createDocumentation(description);
+        return documentationOutputService.generateDocumentation(description);
     }
 
     @Override
@@ -44,7 +44,7 @@ public class WSDL2DocServiceImpl implements WSDL2DocService {
         final DocumentationOutputService documentationOutputService =
                 DocumentationOutputServiceFactory.createDocumentationOutputService(OutputFormat.getOutputFormat(outputFormat));
 
-        return documentationOutputService.createDocumentation(description);
+        return documentationOutputService.generateDocumentation(description);
     }
 
     @Override
@@ -55,6 +55,6 @@ public class WSDL2DocServiceImpl implements WSDL2DocService {
         final DocumentationOutputService documentationOutputService =
                 DocumentationOutputServiceFactory.createDocumentationOutputService(OutputFormat.getOutputFormat(outputFormat));
 
-        return documentationOutputService.createDocumentation(description);
+        return documentationOutputService.generateDocumentation(description);
     }
 }
