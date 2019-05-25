@@ -316,6 +316,8 @@ public class MarkdownDocumentationOutputServiceImpl implements DocumentationOutp
                         stringBuilder.append(new BoldText("Name")).append(": ").append(new Text(element.name.getLocalPart())).append("\n<br />")
                 .append(new BoldText("Type")).append(": ").append(new Text(element.getType().getLocalPart())).append("\n<br />")
                 .append(new BoldText("Cardinality")).append(": ").append(new Text(element.getCardinality())).append("\n<br />"));
+            } else {
+                stringBuilder.append("\n<br />");
             }
 
             stringBuilder.append("\n<br />");
@@ -336,27 +338,29 @@ public class MarkdownDocumentationOutputServiceImpl implements DocumentationOutp
 
             final List<Part> parts = message.getParts();
             if(!parts.isEmpty()) {
-                stringBuilder.append(new BoldText("Parts:")).append("<br/>\n");
+                stringBuilder.append(new BoldText("Parts:")).append("\n");
 
                 for (final Part part : parts) {
-                    stringBuilder.append(new BoldText("Name")).append(": ").append(part.getPartQName().getLocalPart()).append("<br />\n");
+                    final List<String> partElements = new ArrayList<>();
+
+                    partElements.add(new BoldText("Name") + ": " + part.getPartQName().getLocalPart());
 
                     final Element element = part.getElement();
                     final Type type = part.getType();
 
                     if(element != null) {
                         final String elementName = element.getQName().getLocalPart();
-
-                        stringBuilder.append(new BoldText("Type")).append(": ").append(
-                                new Link(elementName , "#" + elementName )).append("<br />\n");
+                        partElements.add(new BoldText("Type") + ": " + new Link(elementName , "#" + elementName ));
                     }
 
                     if(type != null) {
                         final String elementName = type.getQName().getLocalPart();
 
-                        stringBuilder.append(new BoldText("Type")).append(": ").append(
-                                new Link(elementName , "#" + elementName )).append("\n");
+                        partElements.add(new BoldText("Type") + ": " +
+                                new Link(elementName , "#" + elementName ));
                     }
+
+                    stringBuilder.append(new UnorderedList<>(partElements)).append("\n");
                 }
             }
 
