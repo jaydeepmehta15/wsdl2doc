@@ -1,7 +1,8 @@
 package de.sattelmair.wsdl2doc.service.impl;
 
+import de.sattelmair.wsdl2doc.Utils;
+import de.sattelmair.wsdl2doc.domain.Datatype;
 import de.sattelmair.wsdl2doc.service.DocumentationOutputService;
-import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import net.steppschuh.markdowngenerator.link.Link;
 import net.steppschuh.markdowngenerator.list.UnorderedList;
@@ -15,14 +16,11 @@ import org.ow2.easywsdl.wsdl.api.abstractItf.AbsItfBinding;
 import org.ow2.easywsdl.wsdl.impl.wsdl11.DescriptionImpl;
 import org.ow2.easywsdl.wsdl.impl.wsdl11.MessageImpl;
 
-import javax.xml.namespace.QName;
 import java.util.*;
 import java.util.stream.Collectors;
 
 @Slf4j
 public class MarkdownDocumentationOutputServiceImpl implements DocumentationOutputService {
-
-    private static final String NONE = "none";
 
     @Override
     public byte[] generateDocumentation(final Description serviceDescription) {
@@ -39,7 +37,7 @@ public class MarkdownDocumentationOutputServiceImpl implements DocumentationOutp
 
         stringBuilder.append("\n");
 
-        final Set<Datatype> datatypes = getDatatypes(serviceDescription, getMeesageQNames(serviceDescription), new HashSet<Datatype>());
+        final Set<Datatype> datatypes = Utils.getDatatypes(serviceDescription, Utils.getMeesageQNames(serviceDescription), new HashSet<>());
         stringBuilder.append(createDatatypesDocumentation(datatypes));
 
         return stringBuilder.toString().getBytes();
@@ -144,7 +142,7 @@ public class MarkdownDocumentationOutputServiceImpl implements DocumentationOutp
                 stringBuilder.append(createFaultDocumentation(fault));
             }
         } else {
-            return NONE;
+            return Utils.NO_VALUE;
         }
 
         return stringBuilder.toString();
@@ -165,7 +163,7 @@ public class MarkdownDocumentationOutputServiceImpl implements DocumentationOutp
             return new Text(partName).toString();
         }
 
-        return NONE;
+        return Utils.NO_VALUE;
     }
 
     private String createOutputDocumentation(final Output output) {
@@ -186,7 +184,7 @@ public class MarkdownDocumentationOutputServiceImpl implements DocumentationOutp
 
         }
 
-        return NONE;
+        return Utils.NO_VALUE;
     }
 
     private String createInputDocumentation(final Input input) {
@@ -206,99 +204,7 @@ public class MarkdownDocumentationOutputServiceImpl implements DocumentationOutp
             }
         }
 
-        return NONE;
-    }
-
-    private Set<QName> getMeesageQNames(final Description description) {
-        final Set<QName> messageQNames = new HashSet<>();
-        final List<MessageImpl> messages = ((DescriptionImpl) description).getMessages();
-
-        for (final MessageImpl message : messages) {
-            final List<Part> parts = message.getParts();
-            for (final Part part : parts) {
-                final Element element = part.getElement();
-                QName partName = null;
-
-                if (element != null) {
-                    partName = element.getQName();
-                } else {
-                    partName = part.getType().getQName();
-                }
-
-                if(partName != null) {
-                    messageQNames.add(partName);
-                }
-            }
-        }
-
-        return messageQNames;
-    }
-
-    private Set<Datatype> getDatatypes(final Description description, final Set<QName> messageParts, final Set<Datatype> datatypes) {
-        for(final QName messagePart : messageParts) {
-            final List<Schema> schemas = description.getTypes().getSchemas();
-
-            for(final Schema schema : schemas) {
-                Type type = schema.getType(messagePart);
-
-                // In case of complexType tag inside element tag
-                if (type == null) {
-                    type = schema.getElement(messagePart).getType();
-                }
-
-                final Datatype datatype = new Datatype(messagePart);
-
-                if (type instanceof ComplexType) {
-                    final ComplexType complexType = (ComplexType) type;
-
-                    if (complexType.getSequence() != null) {
-                        final List<Element> elements = complexType.getSequence().getElements();
-
-                        for (final Element complexTypeElement : elements) {
-                            datatype.getElements().add(createComplexDatatypeElement(complexTypeElement));
-                        }
-
-                        datatypes.add(datatype);
-                    } else if(complexType.getAll() != null) {
-                        final All all = complexType.getAll();
-                        final List<Element> elements = all.getElements();
-
-                        for (final Element complexTypeElement : elements) {
-                            datatype.getElements().add(createComplexDatatypeElement(complexTypeElement));
-                        }
-
-                        datatypes.add(datatype);
-                    } else {
-                        datatypes.add(datatype);
-                    }
-                } else {
-                    datatypes.add(new Datatype(type.getQName()));
-                }
-            }
-        }
-
-        final Set<QName> unaddedDatatypeNames = new HashSet<>();
-        for(final Datatype datatype : datatypes) {
-            if(datatype.isComplex()) {
-                final Optional<QName> notAddedQname = datatype.getElements().stream()
-                        .filter(element -> !messageParts.contains(element.getType()))
-                        .findFirst().map(element -> new QName(element.getType().getNamespaceURI(), element.getType().getLocalPart()));
-
-                notAddedQname.ifPresent(unaddedDatatypeNames::add);
-            }
-        }
-
-        if(!unaddedDatatypeNames.isEmpty()) {
-            messageParts.addAll(unaddedDatatypeNames);
-            getDatatypes(description, messageParts, datatypes);
-        }
-
-        return datatypes;
-    }
-
-    private ComplexDatatypeElement createComplexDatatypeElement(final Element element) {
-        return new ComplexDatatypeElement(element.getQName(), element.getType().getQName(),
-                        element.getMinOccurs(), element.getMaxOccurs());
+        return Utils.NO_VALUE;
     }
 
     private String createDatatypesDocumentation(final Set<Datatype> datatypes) {
@@ -312,10 +218,10 @@ public class MarkdownDocumentationOutputServiceImpl implements DocumentationOutp
             if(datatype.isComplex()) {
                 stringBuilder.append("\n");
 
-                final List<String> parameters = datatype.elements.stream().map(element ->
-                        new BoldText("Name") + ": " + new Text(element.name.getLocalPart()) + "\n<br />" +
-                                new BoldText("Type") + ": " + new Text(element.getType().getLocalPart()) + "\n<br />" +
-                                new BoldText("Cardinality") + ": " + new Text(element.getCardinality()) + "\n<br />"
+                final List<String> parameters = datatype.getElements().stream().map(element ->
+                        new BoldText("Name") + ": " + new Text(element.getName().getLocalPart()) + "\n" +
+                                new BoldText("Type") + ": " + new Text(element.getType().getLocalPart()) + "\n" +
+                                new BoldText("Cardinality") + ": " + new Text(element.getCardinality()) + "\n"
                 ).collect(Collectors.toList());
 
                 stringBuilder.append(new UnorderedList<>(parameters)).append("\n");
@@ -391,37 +297,4 @@ public class MarkdownDocumentationOutputServiceImpl implements DocumentationOutp
         return "";
     }
 
-    @Data
-    private class Datatype {
-
-        private QName name;
-        private final List<ComplexDatatypeElement> elements;
-
-        Datatype(final QName name) {
-            this.name = name;
-            this.elements = new ArrayList<>();
-        }
-
-        public boolean isComplex() {
-            return !this.elements.isEmpty();
-        }
-    }
-
-    @Data
-    private class ComplexDatatypeElement {
-
-        private final QName name;
-        private final QName type;
-        private final String cardinality;
-
-        ComplexDatatypeElement(final QName name, final QName type, final int minOccurs, final String maxOccurs) {
-            this.name = name;
-            this.type = type;
-            this.cardinality = minOccurs + ".." + maxOccurs;
-        }
-
-        ComplexDatatypeElement(final QName name, final QName type) {
-            this(name, type, 0, "unbounded");
-        }
-    }
 }

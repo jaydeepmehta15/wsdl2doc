@@ -2,6 +2,7 @@ package de.sattelmair.wsdl2doc;
 
 import de.sattelmair.wsdl2doc.service.DocumentationOutputService;
 import de.sattelmair.wsdl2doc.service.WSDLImportService;
+import de.sattelmair.wsdl2doc.service.impl.HTMLDocumentationOutputServiceImpl;
 import de.sattelmair.wsdl2doc.service.impl.MarkdownDocumentationOutputServiceImpl;
 import de.sattelmair.wsdl2doc.service.impl.WSDLImportServiceImpl;
 import org.junit.Test;
@@ -17,12 +18,22 @@ public class WSDLImportTest {
     private static final String WSDL_FILE_PATH = "src/test/resources/de/sattelmair/wsdl2doc/wsdl/valid3.wsdl";
 
     @Test
-    public void test() throws WSDLImportException, IOException {
+    public void markdown_documentation_creator_test() throws WSDLImportException, IOException {
         final WSDLImportService wsdlImportService = new WSDLImportServiceImpl();
         final Description description = wsdlImportService.readWSDLFromFile(WSDL_FILE_PATH);
 
         final DocumentationOutputService documentationOutputService = new MarkdownDocumentationOutputServiceImpl();
-        File file = new File("src/test/resources/de/sattelmair/wsdl2doc/output/output.md");
+        File file = new File("src/test/resources/de/sattelmair/wsdl2doc/output/output_markdown.md");
+        Files.write(file.toPath(), documentationOutputService.generateDocumentation(description));
+    }
+
+    @Test
+    public void html_documentation_creator_test() throws WSDLImportException, IOException {
+        final WSDLImportService wsdlImportService = new WSDLImportServiceImpl();
+        final Description description = wsdlImportService.readWSDLFromFile(WSDL_FILE_PATH);
+
+        final DocumentationOutputService documentationOutputService = new HTMLDocumentationOutputServiceImpl();
+        File file = new File("src/test/resources/de/sattelmair/wsdl2doc/output/output_html.html");
         Files.write(file.toPath(), documentationOutputService.generateDocumentation(description));
     }
 }

@@ -46,7 +46,7 @@ public class ApplicationMainProcessorServiceImpl implements ApplicationMainProce
         try {
             return new DefaultParser().parse(options, input);
         } catch (ParseException parseException) {
-            throw new RuntimeException("ERROR: Unable to parse command-line arguments "
+            throw new IllegalArgumentException("ERROR: Unable to parse command-line arguments "
                     + Arrays.toString(input) + " due to: "
                     + parseException);
         }
