@@ -100,225 +100,281 @@ Endpoints
 Messages
 --------
 <a id=GetWeatherInformationSoapIn></a>GetWeatherInformationSoapIn<br/>
-**Parts:**<br/>
-**Name**: parameters<br />
-**Type**: [GetWeatherInformation](#GetWeatherInformation)<br />
+**Parts:**
+- **Name**: parameters
+- **Type**: [GetWeatherInformation](#GetWeatherInformation)
 
 <a id=GetWeatherInformationSoapOut></a>GetWeatherInformationSoapOut<br/>
-**Parts:**<br/>
-**Name**: parameters<br />
-**Type**: [GetWeatherInformationResponse](#GetWeatherInformationResponse)<br />
+**Parts:**
+- **Name**: parameters
+- **Type**: [GetWeatherInformationResponse](#GetWeatherInformationResponse)
 
 <a id=GetCityForecastByZIPSoapIn></a>GetCityForecastByZIPSoapIn<br/>
-**Parts:**<br/>
-**Name**: parameters<br />
-**Type**: [GetCityForecastByZIP](#GetCityForecastByZIP)<br />
+**Parts:**
+- **Name**: parameters
+- **Type**: [GetCityForecastByZIP](#GetCityForecastByZIP)
 
 <a id=GetCityForecastByZIPSoapOut></a>GetCityForecastByZIPSoapOut<br/>
-**Parts:**<br/>
-**Name**: parameters<br />
-**Type**: [GetCityForecastByZIPResponse](#GetCityForecastByZIPResponse)<br />
+**Parts:**
+- **Name**: parameters
+- **Type**: [GetCityForecastByZIPResponse](#GetCityForecastByZIPResponse)
 
 <a id=GetCityWeatherByZIPSoapIn></a>GetCityWeatherByZIPSoapIn<br/>
-**Parts:**<br/>
-**Name**: parameters<br />
-**Type**: [GetCityWeatherByZIP](#GetCityWeatherByZIP)<br />
+**Parts:**
+- **Name**: parameters
+- **Type**: [GetCityWeatherByZIP](#GetCityWeatherByZIP)
 
 <a id=GetCityWeatherByZIPSoapOut></a>GetCityWeatherByZIPSoapOut<br/>
-**Parts:**<br/>
-**Name**: parameters<br />
-**Type**: [GetCityWeatherByZIPResponse](#GetCityWeatherByZIPResponse)<br />
+**Parts:**
+- **Name**: parameters
+- **Type**: [GetCityWeatherByZIPResponse](#GetCityWeatherByZIPResponse)
 
 <a id=GetWeatherInformationHttpGetIn></a>GetWeatherInformationHttpGetIn<br/>
 
 <a id=GetWeatherInformationHttpGetOut></a>GetWeatherInformationHttpGetOut<br/>
-**Parts:**<br/>
-**Name**: Body<br />
-**Type**: [ArrayOfWeatherDescription](#ArrayOfWeatherDescription)<br />
+**Parts:**
+- **Name**: Body
+- **Type**: [ArrayOfWeatherDescription](#ArrayOfWeatherDescription)
 
 <a id=GetCityForecastByZIPHttpGetIn></a>GetCityForecastByZIPHttpGetIn<br/>
-**Parts:**<br/>
-**Name**: ZIP<br />
-**Type**: [string](#string)
+**Parts:**
+- **Name**: ZIP
+- **Type**: [string](#string)
 
 <a id=GetCityForecastByZIPHttpGetOut></a>GetCityForecastByZIPHttpGetOut<br/>
-**Parts:**<br/>
-**Name**: Body<br />
-**Type**: [ForecastReturn](#ForecastReturn)<br />
+**Parts:**
+- **Name**: Body
+- **Type**: [ForecastReturn](#ForecastReturn)
 
 <a id=GetCityWeatherByZIPHttpGetIn></a>GetCityWeatherByZIPHttpGetIn<br/>
-**Parts:**<br/>
-**Name**: ZIP<br />
-**Type**: [string](#string)
+**Parts:**
+- **Name**: ZIP
+- **Type**: [string](#string)
 
 <a id=GetCityWeatherByZIPHttpGetOut></a>GetCityWeatherByZIPHttpGetOut<br/>
-**Parts:**<br/>
-**Name**: Body<br />
-**Type**: [WeatherReturn](#WeatherReturn)<br />
+**Parts:**
+- **Name**: Body
+- **Type**: [WeatherReturn](#WeatherReturn)
 
 <a id=GetWeatherInformationHttpPostIn></a>GetWeatherInformationHttpPostIn<br/>
 
 <a id=GetWeatherInformationHttpPostOut></a>GetWeatherInformationHttpPostOut<br/>
-**Parts:**<br/>
-**Name**: Body<br />
-**Type**: [ArrayOfWeatherDescription](#ArrayOfWeatherDescription)<br />
+**Parts:**
+- **Name**: Body
+- **Type**: [ArrayOfWeatherDescription](#ArrayOfWeatherDescription)
 
 <a id=GetCityForecastByZIPHttpPostIn></a>GetCityForecastByZIPHttpPostIn<br/>
-**Parts:**<br/>
-**Name**: ZIP<br />
-**Type**: [string](#string)
+**Parts:**
+- **Name**: ZIP
+- **Type**: [string](#string)
 
 <a id=GetCityForecastByZIPHttpPostOut></a>GetCityForecastByZIPHttpPostOut<br/>
-**Parts:**<br/>
-**Name**: Body<br />
-**Type**: [ForecastReturn](#ForecastReturn)<br />
+**Parts:**
+- **Name**: Body
+- **Type**: [ForecastReturn](#ForecastReturn)
 
 <a id=GetCityWeatherByZIPHttpPostIn></a>GetCityWeatherByZIPHttpPostIn<br/>
-**Parts:**<br/>
-**Name**: ZIP<br />
-**Type**: [string](#string)
+**Parts:**
+- **Name**: ZIP
+- **Type**: [string](#string)
 
 <a id=GetCityWeatherByZIPHttpPostOut></a>GetCityWeatherByZIPHttpPostOut<br/>
-**Parts:**<br/>
-**Name**: Body<br />
-**Type**: [WeatherReturn](#WeatherReturn)<br />
+**Parts:**
+- **Name**: Body
+- **Type**: [WeatherReturn](#WeatherReturn)
 
 
 Datatypes
 ---------
 <a id=ArrayOfForecast></a>ArrayOfForecast
-<br />- **Name**: Forecast
+- **Name**: Forecast
 <br />**Type**: Forecast
 <br />**Cardinality**: 0..unbounded
-<br /><a id=GetCityForecastByZIPResponse></a>GetCityForecastByZIPResponse
-<br />- **Name**: GetCityForecastByZIPResult
+<br />
+
+<a id=GetCityForecastByZIPResponse></a>GetCityForecastByZIPResponse
+- **Name**: GetCityForecastByZIPResult
 <br />**Type**: ForecastReturn
 <br />**Cardinality**: 0..1
-<br /><a id=GetWeatherInformation></a>GetWeatherInformation
-<br /><a id=GetWeatherInformationResponse></a>GetWeatherInformationResponse
-<br />- **Name**: GetWeatherInformationResult
+<br />
+
+<a id=GetWeatherInformation></a>GetWeatherInformation
+<br /><br />
+<a id=GetWeatherInformationResponse></a>GetWeatherInformationResponse
+- **Name**: GetWeatherInformationResult
 <br />**Type**: ArrayOfWeatherDescription
 <br />**Cardinality**: 0..1
-<br /><a id=temp></a>temp
-<br />- **Name**: MorningLow
+<br />
+
+<a id=temp></a>temp
+- **Name**: MorningLow
 <br />**Type**: string
 <br />**Cardinality**: 0..1
+<br />
 - **Name**: DaytimeHigh
 <br />**Type**: string
 <br />**Cardinality**: 0..1
-<br /><a id=WeatherDescription></a>WeatherDescription
-<br />- **Name**: WeatherID
+<br />
+
+<a id=WeatherDescription></a>WeatherDescription
+- **Name**: WeatherID
 <br />**Type**: short
 <br />**Cardinality**: 1..1
+<br />
 - **Name**: Description
 <br />**Type**: string
 <br />**Cardinality**: 0..1
+<br />
 - **Name**: PictureURL
 <br />**Type**: string
 <br />**Cardinality**: 0..1
-<br /><a id=GetCityWeatherByZIP></a>GetCityWeatherByZIP
-<br />- **Name**: ZIP
+<br />
+
+<a id=GetCityWeatherByZIP></a>GetCityWeatherByZIP
+- **Name**: ZIP
 <br />**Type**: string
 <br />**Cardinality**: 0..1
-<br /><a id=Forecast></a>Forecast
-<br />- **Name**: Date
+<br />
+
+<a id=Forecast></a>Forecast
+- **Name**: Date
 <br />**Type**: dateTime
 <br />**Cardinality**: 1..1
+<br />
 - **Name**: WeatherID
 <br />**Type**: short
 <br />**Cardinality**: 1..1
+<br />
 - **Name**: Desciption
 <br />**Type**: string
 <br />**Cardinality**: 0..1
+<br />
 - **Name**: Temperatures
 <br />**Type**: temp
 <br />**Cardinality**: 1..1
+<br />
 - **Name**: ProbabilityOfPrecipiation
 <br />**Type**: POP
 <br />**Cardinality**: 1..1
-<br /><a id=GetCityForecastByZIP></a>GetCityForecastByZIP
-<br />- **Name**: ZIP
+<br />
+
+<a id=GetCityForecastByZIP></a>GetCityForecastByZIP
+- **Name**: ZIP
 <br />**Type**: string
 <br />**Cardinality**: 0..1
-<br /><a id=short></a>short
-<br /><a id=GetCityWeatherByZIPResponse></a>GetCityWeatherByZIPResponse
-<br />- **Name**: GetCityWeatherByZIPResult
+<br />
+
+<a id=short></a>short
+<br /><br />
+<a id=GetCityWeatherByZIPResponse></a>GetCityWeatherByZIPResponse
+- **Name**: GetCityWeatherByZIPResult
 <br />**Type**: WeatherReturn
 <br />**Cardinality**: 1..1
-<br /><a id=ArrayOfWeatherDescription></a>ArrayOfWeatherDescription
-<br />- **Name**: WeatherDescription
+<br />
+
+<a id=ArrayOfWeatherDescription></a>ArrayOfWeatherDescription
+- **Name**: WeatherDescription
 <br />**Type**: WeatherDescription
 <br />**Cardinality**: 0..unbounded
-<br /><a id=ForecastReturn></a>ForecastReturn
-<br />- **Name**: Success
+<br />
+
+<a id=ForecastReturn></a>ForecastReturn
+- **Name**: Success
 <br />**Type**: boolean
 <br />**Cardinality**: 1..1
+<br />
 - **Name**: ResponseText
 <br />**Type**: string
 <br />**Cardinality**: 0..1
+<br />
 - **Name**: State
 <br />**Type**: string
 <br />**Cardinality**: 0..1
+<br />
 - **Name**: City
 <br />**Type**: string
 <br />**Cardinality**: 0..1
+<br />
 - **Name**: WeatherStationCity
 <br />**Type**: string
 <br />**Cardinality**: 0..1
+<br />
 - **Name**: ForecastResult
 <br />**Type**: ArrayOfForecast
 <br />**Cardinality**: 0..1
-<br /><a id=boolean></a>boolean
-<br /><a id=dateTime></a>dateTime
-<br /><a id=POP></a>POP
-<br />- **Name**: Nighttime
+<br />
+
+<a id=boolean></a>boolean
+<br /><br />
+<a id=dateTime></a>dateTime
+<br /><br />
+<a id=POP></a>POP
+- **Name**: Nighttime
 <br />**Type**: string
 <br />**Cardinality**: 0..1
+<br />
 - **Name**: Daytime
 <br />**Type**: string
 <br />**Cardinality**: 0..1
-<br /><a id=WeatherReturn></a>WeatherReturn
-<br />- **Name**: Success
+<br />
+
+<a id=WeatherReturn></a>WeatherReturn
+- **Name**: Success
 <br />**Type**: boolean
 <br />**Cardinality**: 1..1
+<br />
 - **Name**: ResponseText
 <br />**Type**: string
 <br />**Cardinality**: 0..1
+<br />
 - **Name**: State
 <br />**Type**: string
 <br />**Cardinality**: 0..1
+<br />
 - **Name**: City
 <br />**Type**: string
 <br />**Cardinality**: 0..1
+<br />
 - **Name**: WeatherStationCity
 <br />**Type**: string
 <br />**Cardinality**: 0..1
+<br />
 - **Name**: WeatherID
 <br />**Type**: short
 <br />**Cardinality**: 1..1
+<br />
 - **Name**: Description
 <br />**Type**: string
 <br />**Cardinality**: 0..1
+<br />
 - **Name**: Temperature
 <br />**Type**: string
 <br />**Cardinality**: 0..1
+<br />
 - **Name**: RelativeHumidity
 <br />**Type**: string
 <br />**Cardinality**: 0..1
+<br />
 - **Name**: Wind
 <br />**Type**: string
 <br />**Cardinality**: 0..1
+<br />
 - **Name**: Pressure
 <br />**Type**: string
 <br />**Cardinality**: 0..1
+<br />
 - **Name**: Visibility
 <br />**Type**: string
 <br />**Cardinality**: 0..1
+<br />
 - **Name**: WindChill
 <br />**Type**: string
 <br />**Cardinality**: 0..1
+<br />
 - **Name**: Remarks
 <br />**Type**: string
 <br />**Cardinality**: 0..1
-<br /><a id=string></a>string
 <br />
+
+<a id=string></a>string
+<br /><br />

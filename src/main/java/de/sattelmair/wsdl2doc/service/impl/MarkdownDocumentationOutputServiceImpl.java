@@ -310,17 +310,20 @@ public class MarkdownDocumentationOutputServiceImpl implements DocumentationOutp
             stringBuilder.append("<a id=" + datatypeName + "></a>").append(datatypeName);
 
             if(datatype.isComplex()) {
-                stringBuilder.append("\n<br />");
+                stringBuilder.append("\n");
 
-                datatype.elements.forEach(element ->
-                        stringBuilder.append(new BoldText("Name")).append(": ").append(new Text(element.name.getLocalPart())).append("\n<br />")
-                .append(new BoldText("Type")).append(": ").append(new Text(element.getType().getLocalPart())).append("\n<br />")
-                .append(new BoldText("Cardinality")).append(": ").append(new Text(element.getCardinality())).append("\n<br />"));
+                final List<String> parameters = datatype.elements.stream().map(element ->
+                        new BoldText("Name") + ": " + new Text(element.name.getLocalPart()) + "\n<br />" +
+                                new BoldText("Type") + ": " + new Text(element.getType().getLocalPart()) + "\n<br />" +
+                                new BoldText("Cardinality") + ": " + new Text(element.getCardinality()) + "\n<br />"
+                ).collect(Collectors.toList());
+
+                stringBuilder.append(new UnorderedList<>(parameters)).append("\n");
             } else {
-                stringBuilder.append("\n<br />");
+                stringBuilder.append("\n<br /><br />");
             }
 
-            stringBuilder.append("\n<br />");
+            stringBuilder.append("\n");
         }
 
         return stringBuilder.toString();
