@@ -30,7 +30,7 @@ public class WSDLImportTest {
         final WSDLImportService wsdlImportService = new WSDLImportServiceImpl();
         final Description description = wsdlImportService.readWSDLFromFile(WSDL_FILE_PATH);
 
-        final DocumentationOutputService documentationOutputService = new HTMLDocumentationOutputServiceImpl();
+        final DocumentationOutputService documentationOutputService = new HTMLDocumentationOutputServiceImpl(new MarkdownDocumentationOutputServiceImpl());
         File file = new File("src/test/resources/de/sattelmair/wsdl2doc/output/output_html.html");
         Files.write(file.toPath(), documentationOutputService.generateDocumentation(description));
     }
@@ -40,7 +40,7 @@ public class WSDLImportTest {
         final WSDLImportService wsdlImportService = new WSDLImportServiceImpl();
         final Description description = wsdlImportService.readWSDLFromFile(WSDL_FILE_PATH);
 
-        final DocumentationOutputService documentationOutputService = new PDFDocumentationOutputServiceImpl();
+        final DocumentationOutputService documentationOutputService = new PDFDocumentationOutputServiceImpl(new HTMLDocumentationOutputServiceImpl(new MarkdownDocumentationOutputServiceImpl(false)));
         File file = new File("src/test/resources/de/sattelmair/wsdl2doc/output/output_pdf.pdf");
         Files.write(file.toPath(), documentationOutputService.generateDocumentation(description));
     }

@@ -13,11 +13,11 @@ public class DocumentationOutputServiceFactory {
 
     public static DocumentationOutputService createDocumentationOutputService(final OutputFormat outputFormat) {
         switch (outputFormat) {
-            case PDF: return new PDFDocumentationOutputServiceImpl();
-            case HTML: return new HTMLDocumentationOutputServiceImpl();
+            case PDF: return new PDFDocumentationOutputServiceImpl(new HTMLDocumentationOutputServiceImpl(new MarkdownDocumentationOutputServiceImpl(false)));
+            case HTML: return new HTMLDocumentationOutputServiceImpl(new MarkdownDocumentationOutputServiceImpl());
             case WORD: return new WordDocumentationOutputServiceImpl();
             case MARKDOWN: return new MarkdownDocumentationOutputServiceImpl();
-            default: return new PDFDocumentationOutputServiceImpl();   //Should not happen! Default is PDF output.
+            default: return new PDFDocumentationOutputServiceImpl(new HTMLDocumentationOutputServiceImpl(new MarkdownDocumentationOutputServiceImpl(false)));   //Should not happen! Default is PDF output.
         }
     }
 

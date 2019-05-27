@@ -3,6 +3,8 @@ package de.sattelmair.wsdl2doc.service.impl;
 import de.sattelmair.wsdl2doc.Utils;
 import de.sattelmair.wsdl2doc.domain.Datatype;
 import de.sattelmair.wsdl2doc.service.DocumentationOutputService;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.steppschuh.markdowngenerator.link.Link;
 import net.steppschuh.markdowngenerator.list.UnorderedList;
@@ -20,7 +22,11 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Slf4j
+@AllArgsConstructor
+@NoArgsConstructor
 public class MarkdownDocumentationOutputServiceImpl implements DocumentationOutputService {
+
+    private boolean doubleLink = true;
 
     @Override
     public byte[] generateDocumentation(final Description serviceDescription) {
@@ -213,7 +219,7 @@ public class MarkdownDocumentationOutputServiceImpl implements DocumentationOutp
 
         for(final Datatype datatype : datatypes) {
             final String datatypeName = datatype.getName().getLocalPart();
-            stringBuilder.append("<a id=" + datatypeName + "></a>").append(datatypeName);
+            stringBuilder.append("<a id=" + datatypeName + "></a>").append(this.doubleLink ? datatypeName : "");
 
             if(datatype.isComplex()) {
                 stringBuilder.append("\n");
@@ -243,7 +249,7 @@ public class MarkdownDocumentationOutputServiceImpl implements DocumentationOutp
         final List<MessageImpl> messages = ((DescriptionImpl) description).getMessages();
         for (final MessageImpl message : messages) {
             final String messageName = message.getQName().getLocalPart();
-            stringBuilder.append(new Text("<a id=" + messageName + "></a>")).append(messageName).append("<br/>\n");
+            stringBuilder.append(new Text("<a id=" + messageName + "></a>")).append(this.doubleLink ? messageName : "").append("<br/>\n");
 
             final List<Part> parts = message.getParts();
             if(!parts.isEmpty()) {
