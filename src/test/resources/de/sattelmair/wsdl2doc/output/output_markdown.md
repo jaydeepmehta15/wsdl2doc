@@ -188,121 +188,121 @@ Datatypes
 ---------
 <a id=ArrayOfForecast></a>ArrayOfForecast
 - **Name**: Forecast
-<br />**Type**: Forecast
-<br />**Cardinality**: 0..unbounded
-<br />
+**Type**: Forecast
+**Cardinality**: 0..unbounded
+
 
 <a id=GetCityForecastByZIPResponse></a>GetCityForecastByZIPResponse
 - **Name**: GetCityForecastByZIPResult
-<br />**Type**: ForecastReturn
-<br />**Cardinality**: 0..1
-<br />
+**Type**: ForecastReturn
+**Cardinality**: 0..1
+
 
 <a id=GetWeatherInformation></a>GetWeatherInformation
 <br /><br />
 <a id=GetWeatherInformationResponse></a>GetWeatherInformationResponse
 - **Name**: GetWeatherInformationResult
-<br />**Type**: ArrayOfWeatherDescription
-<br />**Cardinality**: 0..1
-<br />
+**Type**: ArrayOfWeatherDescription
+**Cardinality**: 0..1
+
 
 <a id=temp></a>temp
 - **Name**: MorningLow
-<br />**Type**: string
-<br />**Cardinality**: 0..1
-<br />
+**Type**: string
+**Cardinality**: 0..1
+
 - **Name**: DaytimeHigh
-<br />**Type**: string
-<br />**Cardinality**: 0..1
-<br />
+**Type**: string
+**Cardinality**: 0..1
+
 
 <a id=WeatherDescription></a>WeatherDescription
 - **Name**: WeatherID
-<br />**Type**: short
-<br />**Cardinality**: 1..1
-<br />
+**Type**: short
+**Cardinality**: 1..1
+
 - **Name**: Description
-<br />**Type**: string
-<br />**Cardinality**: 0..1
-<br />
+**Type**: string
+**Cardinality**: 0..1
+
 - **Name**: PictureURL
-<br />**Type**: string
-<br />**Cardinality**: 0..1
-<br />
+**Type**: string
+**Cardinality**: 0..1
+
 
 <a id=GetCityWeatherByZIP></a>GetCityWeatherByZIP
 - **Name**: ZIP
-<br />**Type**: string
-<br />**Cardinality**: 0..1
-<br />
+**Type**: string
+**Cardinality**: 0..1
+
 
 <a id=Forecast></a>Forecast
 - **Name**: Date
-<br />**Type**: dateTime
-<br />**Cardinality**: 1..1
-<br />
+**Type**: dateTime
+**Cardinality**: 1..1
+
 - **Name**: WeatherID
-<br />**Type**: short
-<br />**Cardinality**: 1..1
-<br />
+**Type**: short
+**Cardinality**: 1..1
+
 - **Name**: Desciption
-<br />**Type**: string
-<br />**Cardinality**: 0..1
-<br />
+**Type**: string
+**Cardinality**: 0..1
+
 - **Name**: Temperatures
-<br />**Type**: temp
-<br />**Cardinality**: 1..1
-<br />
+**Type**: temp
+**Cardinality**: 1..1
+
 - **Name**: ProbabilityOfPrecipiation
-<br />**Type**: POP
-<br />**Cardinality**: 1..1
-<br />
+**Type**: POP
+**Cardinality**: 1..1
+
 
 <a id=GetCityForecastByZIP></a>GetCityForecastByZIP
 - **Name**: ZIP
-<br />**Type**: string
-<br />**Cardinality**: 0..1
-<br />
+**Type**: string
+**Cardinality**: 0..1
+
 
 <a id=short></a>short
 <br /><br />
 <a id=GetCityWeatherByZIPResponse></a>GetCityWeatherByZIPResponse
 - **Name**: GetCityWeatherByZIPResult
-<br />**Type**: WeatherReturn
-<br />**Cardinality**: 1..1
-<br />
+**Type**: WeatherReturn
+**Cardinality**: 1..1
+
 
 <a id=ArrayOfWeatherDescription></a>ArrayOfWeatherDescription
 - **Name**: WeatherDescription
-<br />**Type**: WeatherDescription
-<br />**Cardinality**: 0..unbounded
-<br />
+**Type**: WeatherDescription
+**Cardinality**: 0..unbounded
+
 
 <a id=ForecastReturn></a>ForecastReturn
 - **Name**: Success
-<br />**Type**: boolean
-<br />**Cardinality**: 1..1
-<br />
+**Type**: boolean
+**Cardinality**: 1..1
+
 - **Name**: ResponseText
-<br />**Type**: string
-<br />**Cardinality**: 0..1
-<br />
+**Type**: string
+**Cardinality**: 0..1
+
 - **Name**: State
-<br />**Type**: string
-<br />**Cardinality**: 0..1
-<br />
+**Type**: string
+**Cardinality**: 0..1
+
 - **Name**: City
-<br />**Type**: string
-<br />**Cardinality**: 0..1
-<br />
+**Type**: string
+**Cardinality**: 0..1
+
 - **Name**: WeatherStationCity
-<br />**Type**: string
-<br />**Cardinality**: 0..1
-<br />
+**Type**: string
+**Cardinality**: 0..1
+
 - **Name**: ForecastResult
-<br />**Type**: ArrayOfForecast
-<br />**Cardinality**: 0..1
-<br />
+**Type**: ArrayOfForecast
+**Cardinality**: 0..1
+
 
 <a id=boolean></a>boolean
 <br /><br />
@@ -310,71 +310,71 @@ Datatypes
 <br /><br />
 <a id=POP></a>POP
 - **Name**: Nighttime
-<br />**Type**: string
-<br />**Cardinality**: 0..1
-<br />
+**Type**: string
+**Cardinality**: 0..1
+
 - **Name**: Daytime
-<br />**Type**: string
-<br />**Cardinality**: 0..1
-<br />
+**Type**: string
+**Cardinality**: 0..1
+
 
 <a id=WeatherReturn></a>WeatherReturn
 - **Name**: Success
-<br />**Type**: boolean
-<br />**Cardinality**: 1..1
-<br />
+**Type**: boolean
+**Cardinality**: 1..1
+
 - **Name**: ResponseText
-<br />**Type**: string
-<br />**Cardinality**: 0..1
-<br />
+**Type**: string
+**Cardinality**: 0..1
+
 - **Name**: State
-<br />**Type**: string
-<br />**Cardinality**: 0..1
-<br />
+**Type**: string
+**Cardinality**: 0..1
+
 - **Name**: City
-<br />**Type**: string
-<br />**Cardinality**: 0..1
-<br />
+**Type**: string
+**Cardinality**: 0..1
+
 - **Name**: WeatherStationCity
-<br />**Type**: string
-<br />**Cardinality**: 0..1
-<br />
+**Type**: string
+**Cardinality**: 0..1
+
 - **Name**: WeatherID
-<br />**Type**: short
-<br />**Cardinality**: 1..1
-<br />
+**Type**: short
+**Cardinality**: 1..1
+
 - **Name**: Description
-<br />**Type**: string
-<br />**Cardinality**: 0..1
-<br />
+**Type**: string
+**Cardinality**: 0..1
+
 - **Name**: Temperature
-<br />**Type**: string
-<br />**Cardinality**: 0..1
-<br />
+**Type**: string
+**Cardinality**: 0..1
+
 - **Name**: RelativeHumidity
-<br />**Type**: string
-<br />**Cardinality**: 0..1
-<br />
+**Type**: string
+**Cardinality**: 0..1
+
 - **Name**: Wind
-<br />**Type**: string
-<br />**Cardinality**: 0..1
-<br />
+**Type**: string
+**Cardinality**: 0..1
+
 - **Name**: Pressure
-<br />**Type**: string
-<br />**Cardinality**: 0..1
-<br />
+**Type**: string
+**Cardinality**: 0..1
+
 - **Name**: Visibility
-<br />**Type**: string
-<br />**Cardinality**: 0..1
-<br />
+**Type**: string
+**Cardinality**: 0..1
+
 - **Name**: WindChill
-<br />**Type**: string
-<br />**Cardinality**: 0..1
-<br />
+**Type**: string
+**Cardinality**: 0..1
+
 - **Name**: Remarks
-<br />**Type**: string
-<br />**Cardinality**: 0..1
-<br />
+**Type**: string
+**Cardinality**: 0..1
+
 
 <a id=string></a>string
 <br /><br />

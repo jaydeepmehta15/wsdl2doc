@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			Webservice documentation
+		</title>
+	</head>
+	<body>
+		<div>
+			<p>
+				<h1>Service: Weather</h1>
+<h2>Endpoints</h2>
+<h3>WeatherSoap</h3>
+<p><strong>Address:</strong> http://wsf.cdyne.com/WeatherWS/Weather.asmx
+<br /><strong>Protocol:</strong> SOAP
+<br /></p>
+<h4>Operations</h4>
+<h5>GetWeatherInformation</h5>
+<p><strong>Description:</strong> Gets Information for each WeatherID
+<br /><strong>Pattern:</strong> IN_OUT
+<br /><strong>Input:</strong> <a href="#GetWeatherInformationSoapIn">GetWeatherInformationSoapIn</a>
+<br /><strong>Output:</strong> <a href="#GetWeatherInformationSoapOut">GetWeatherInformationSoapOut</a>
+<br /><strong>Faults:</strong> none</p>
+<h5>GetCityForecastByZIP</h5>
+<p><strong>Description:</strong> Allows you to get your City Forecast Over the Next 7 Days, which is updated hourly. U.S. Only
+<br /><strong>Pattern:</strong> IN_OUT
+<br /><strong>Input:</strong> <a href="#GetCityForecastByZIPSoapIn">GetCityForecastByZIPSoapIn</a>
+<br /><strong>Output:</strong> <a href="#GetCityForecastByZIPSoapOut">GetCityForecastByZIPSoapOut</a>
+<br /><strong>Faults:</strong> none</p>
+<h5>GetCityWeatherByZIP</h5>
+<p><strong>Description:</strong> Allows you to get your City's Weather, which is updated hourly. U.S. Only
+<br /><strong>Pattern:</strong> IN_OUT
+<br /><strong>Input:</strong> <a href="#GetCityWeatherByZIPSoapIn">GetCityWeatherByZIPSoapIn</a>
+<br /><strong>Output:</strong> <a href="#GetCityWeatherByZIPSoapOut">GetCityWeatherByZIPSoapOut</a>
+<br /><strong>Faults:</strong> none</p>
+<h3>WeatherSoap12</h3>
+<p><strong>Address:</strong> http://wsf.cdyne.com/WeatherWS/Weather.asmx
+<br /><strong>Protocol:</strong> SOAP
+<br /></p>
+<h4>Operations</h4>
+<h5>GetWeatherInformation</h5>
+<p><strong>Description:</strong> Gets Information for each WeatherID
+<br /><strong>Pattern:</strong> IN_OUT
+<br /><strong>Input:</strong> <a href="#GetWeatherInformationSoapIn">GetWeatherInformationSoapIn</a>
+<br /><strong>Output:</strong> <a href="#GetWeatherInformationSoapOut">GetWeatherInformationSoapOut</a>
+<br /><strong>Faults:</strong> none</p>
+<h5>GetCityForecastByZIP</h5>
+<p><strong>Description:</strong> Allows you to get your City Forecast Over the Next 7 Days, which is updated hourly. U.S. Only
+<br /><strong>Pattern:</strong> IN_OUT
+<br /><strong>Input:</strong> <a href="#GetCityForecastByZIPSoapIn">GetCityForecastByZIPSoapIn</a>
+<br /><strong>Output:</strong> <a href="#GetCityForecastByZIPSoapOut">GetCityForecastByZIPSoapOut</a>
+<br /><strong>Faults:</strong> none</p>
+<h5>GetCityWeatherByZIP</h5>
+<p><strong>Description:</strong> Allows you to get your City's Weather, which is updated hourly. U.S. Only
+<br /><strong>Pattern:</strong> IN_OUT
+<br /><strong>Input:</strong> <a href="#GetCityWeatherByZIPSoapIn">GetCityWeatherByZIPSoapIn</a>
+<br /><strong>Output:</strong> <a href="#GetCityWeatherByZIPSoapOut">GetCityWeatherByZIPSoapOut</a>
+<br /><strong>Faults:</strong> none</p>
+<h3>WeatherHttpGet</h3>
+<p><strong>Address:</strong> http://wsf.cdyne.com/WeatherWS/Weather.asmx
+<br /><strong>Protocol:</strong> HTTP
+<br /><strong>Verb:</strong> GET
+<br /></p>
+<h4>Operations</h4>
+<h5>GetWeatherInformation</h5>
+<p><strong>Description:</strong> Gets Information for each WeatherID
+<br /><strong>Pattern:</strong> IN_OUT
+<br /><strong>Input:</strong> none
+<br /><strong>Output:</strong> <a href="#GetWeatherInformationHttpGetOut">GetWeatherInformationHttpGetOut</a>
+<br /><strong>Faults:</strong> none</p>
+<h5>GetCityForecastByZIP</h5>
+<p><strong>Description:</strong> Allows you to get your City Forecast Over the Next 7 Days, which is updated hourly. U.S. Only
+<br /><strong>Pattern:</strong> IN_OUT
+<br /><strong>Input:</strong> string
+<br /><strong>Output:</strong> <a href="#GetCityForecastByZIPHttpGetOut">GetCityForecastByZIPHttpGetOut</a>
+<br /><strong>Faults:</strong> none</p>
+<h5>GetCityWeatherByZIP</h5>
+<p><strong>Description:</strong> Allows you to get your City's Weather, which is updated hourly. U.S. Only
+<br /><strong>Pattern:</strong> IN_OUT
+<br /><strong>Input:</strong> string
+<br /><strong>Output:</strong> <a href="#GetCityWeatherByZIPHttpGetOut">GetCityWeatherByZIPHttpGetOut</a>
+<br /><strong>Faults:</strong> none</p>
+<h3>WeatherHttpPost</h3>
+<p><strong>Address:</strong> http://wsf.cdyne.com/WeatherWS/Weather.asmx
+<br /><strong>Protocol:</strong> HTTP
+<br /><strong>Verb:</strong> POST
+<br /></p>
+<h4>Operations</h4>
+<h5>GetWeatherInformation</h5>
+<p><strong>Description:</strong> Gets Information for each WeatherID
+<br /><strong>Pattern:</strong> IN_OUT
+<br /><strong>Input:</strong> none
+<br /><strong>Output:</strong> <a href="#GetWeatherInformationHttpPostOut">GetWeatherInformationHttpPostOut</a>
+<br /><strong>Faults:</strong> none</p>
+<h5>GetCityForecastByZIP</h5>
+<p><strong>Description:</strong> Allows you to get your City Forecast Over the Next 7 Days, which is updated hourly. U.S. Only
+<br /><strong>Pattern:</strong> IN_OUT
+<br /><strong>Input:</strong> string
+<br /><strong>Output:</strong> <a href="#GetCityForecastByZIPHttpPostOut">GetCityForecastByZIPHttpPostOut</a>
+<br /><strong>Faults:</strong> none</p>
+<h5>GetCityWeatherByZIP</h5>
+<p><strong>Description:</strong> Allows you to get your City's Weather, which is updated hourly. U.S. Only
+<br /><strong>Pattern:</strong> IN_OUT
+<br /><strong>Input:</strong> string
+<br /><strong>Output:</strong> <a href="#GetCityWeatherByZIPHttpPostOut">GetCityWeatherByZIPHttpPostOut</a>
+<br /><strong>Faults:</strong> none</p>
+<h2>Messages</h2>
+<p><a id=GetWeatherInformationSoapIn></a>GetWeatherInformationSoapIn<br/>
+<strong>Parts:</strong></p>
+<ul>
+<li><strong>Name</strong>: parameters</li>
+<li><strong>Type</strong>: <a href="#GetWeatherInformation">GetWeatherInformation</a></li>
+</ul>
+<p><a id=GetWeatherInformationSoapOut></a>GetWeatherInformationSoapOut<br/>
+<strong>Parts:</strong></p>
+<ul>
+<li><strong>Name</strong>: parameters</li>
+<li><strong>Type</strong>: <a href="#GetWeatherInformationResponse">GetWeatherInformationResponse</a></li>
+</ul>
+<p><a id=GetCityForecastByZIPSoapIn></a>GetCityForecastByZIPSoapIn<br/>
+<strong>Parts:</strong></p>
+<ul>
+<li><strong>Name</strong>: parameters</li>
+<li><strong>Type</strong>: <a href="#GetCityForecastByZIP">GetCityForecastByZIP</a></li>
+</ul>
+<p><a id=GetCityForecastByZIPSoapOut></a>GetCityForecastByZIPSoapOut<br/>
+<strong>Parts:</strong></p>
+<ul>
+<li><strong>Name</strong>: parameters</li>
+<li><strong>Type</strong>: <a href="#GetCityForecastByZIPResponse">GetCityForecastByZIPResponse</a></li>
+</ul>
+<p><a id=GetCityWeatherByZIPSoapIn></a>GetCityWeatherByZIPSoapIn<br/>
+<strong>Parts:</strong></p>
+<ul>
+<li><strong>Name</strong>: parameters</li>
+<li><strong>Type</strong>: <a href="#GetCityWeatherByZIP">GetCityWeatherByZIP</a></li>
+</ul>
+<p><a id=GetCityWeatherByZIPSoapOut></a>GetCityWeatherByZIPSoapOut<br/>
+<strong>Parts:</strong></p>
+<ul>
+<li><strong>Name</strong>: parameters</li>
+<li><strong>Type</strong>: <a href="#GetCityWeatherByZIPResponse">GetCityWeatherByZIPResponse</a></li>
+</ul>
+<p><a id=GetWeatherInformationHttpGetIn></a>GetWeatherInformationHttpGetIn<br/></p>
+<p><a id=GetWeatherInformationHttpGetOut></a>GetWeatherInformationHttpGetOut<br/>
+<strong>Parts:</strong></p>
+<ul>
+<li><strong>Name</strong>: Body</li>
+<li><strong>Type</strong>: <a href="#ArrayOfWeatherDescription">ArrayOfWeatherDescription</a></li>
+</ul>
+<p><a id=GetCityForecastByZIPHttpGetIn></a>GetCityForecastByZIPHttpGetIn<br/>
+<strong>Parts:</strong></p>
+<ul>
+<li><strong>Name</strong>: ZIP</li>
+<li><strong>Type</strong>: <a href="#string">string</a></li>
+</ul>
+<p><a id=GetCityForecastByZIPHttpGetOut></a>GetCityForecastByZIPHttpGetOut<br/>
+<strong>Parts:</strong></p>
+<ul>
+<li><strong>Name</strong>: Body</li>
+<li><strong>Type</strong>: <a href="#ForecastReturn">ForecastReturn</a></li>
+</ul>
+<p><a id=GetCityWeatherByZIPHttpGetIn></a>GetCityWeatherByZIPHttpGetIn<br/>
+<strong>Parts:</strong></p>
+<ul>
+<li><strong>Name</strong>: ZIP</li>
+<li><strong>Type</strong>: <a href="#string">string</a></li>
+</ul>
+<p><a id=GetCityWeatherByZIPHttpGetOut></a>GetCityWeatherByZIPHttpGetOut<br/>
+<strong>Parts:</strong></p>
+<ul>
+<li><strong>Name</strong>: Body</li>
+<li><strong>Type</strong>: <a href="#WeatherReturn">WeatherReturn</a></li>
+</ul>
+<p><a id=GetWeatherInformationHttpPostIn></a>GetWeatherInformationHttpPostIn<br/></p>
+<p><a id=GetWeatherInformationHttpPostOut></a>GetWeatherInformationHttpPostOut<br/>
+<strong>Parts:</strong></p>
+<ul>
+<li><strong>Name</strong>: Body</li>
+<li><strong>Type</strong>: <a href="#ArrayOfWeatherDescription">ArrayOfWeatherDescription</a></li>
+</ul>
+<p><a id=GetCityForecastByZIPHttpPostIn></a>GetCityForecastByZIPHttpPostIn<br/>
+<strong>Parts:</strong></p>
+<ul>
+<li><strong>Name</strong>: ZIP</li>
+<li><strong>Type</strong>: <a href="#string">string</a></li>
+</ul>
+<p><a id=GetCityForecastByZIPHttpPostOut></a>GetCityForecastByZIPHttpPostOut<br/>
+<strong>Parts:</strong></p>
+<ul>
+<li><strong>Name</strong>: Body</li>
+<li><strong>Type</strong>: <a href="#ForecastReturn">ForecastReturn</a></li>
+</ul>
+<p><a id=GetCityWeatherByZIPHttpPostIn></a>GetCityWeatherByZIPHttpPostIn<br/>
+<strong>Parts:</strong></p>
+<ul>
+<li><strong>Name</strong>: ZIP</li>
+<li><strong>Type</strong>: <a href="#string">string</a></li>
+</ul>
+<p><a id=GetCityWeatherByZIPHttpPostOut></a>GetCityWeatherByZIPHttpPostOut<br/>
+<strong>Parts:</strong></p>
+<ul>
+<li><strong>Name</strong>: Body</li>
+<li><strong>Type</strong>: <a href="#WeatherReturn">WeatherReturn</a></li>
+</ul>
+<h2>Datatypes</h2>
+<p><a id=ArrayOfForecast></a>ArrayOfForecast</p>
+<ul>
+<li><strong>Name</strong>: Forecast
+<strong>Type</strong>: Forecast
+<strong>Cardinality</strong>: 0..unbounded</li>
+</ul>
+<p><a id=GetCityForecastByZIPResponse></a>GetCityForecastByZIPResponse</p>
+<ul>
+<li><strong>Name</strong>: GetCityForecastByZIPResult
+<strong>Type</strong>: ForecastReturn
+<strong>Cardinality</strong>: 0..1</li>
+</ul>
+<p><a id=GetWeatherInformation></a>GetWeatherInformation
+<br /><br />
+<a id=GetWeatherInformationResponse></a>GetWeatherInformationResponse</p>
+<ul>
+<li><strong>Name</strong>: GetWeatherInformationResult
+<strong>Type</strong>: ArrayOfWeatherDescription
+<strong>Cardinality</strong>: 0..1</li>
+</ul>
+<p><a id=temp></a>temp</p>
+<ul>
+<li>
+<p><strong>Name</strong>: MorningLow
+<strong>Type</strong>: string
+<strong>Cardinality</strong>: 0..1</p>
+</li>
+<li>
+<p><strong>Name</strong>: DaytimeHigh
+<strong>Type</strong>: string
+<strong>Cardinality</strong>: 0..1</p>
+</li>
+</ul>
+<p><a id=WeatherDescription></a>WeatherDescription</p>
+<ul>
+<li>
+<p><strong>Name</strong>: WeatherID
+<strong>Type</strong>: short
+<strong>Cardinality</strong>: 1..1</p>
+</li>
+<li>
+<p><strong>Name</strong>: Description
+<strong>Type</strong>: string
+<strong>Cardinality</strong>: 0..1</p>
+</li>
+<li>
+<p><strong>Name</strong>: PictureURL
+<strong>Type</strong>: string
+<strong>Cardinality</strong>: 0..1</p>
+</li>
+</ul>
+<p><a id=GetCityWeatherByZIP></a>GetCityWeatherByZIP</p>
+<ul>
+<li><strong>Name</strong>: ZIP
+<strong>Type</strong>: string
+<strong>Cardinality</strong>: 0..1</li>
+</ul>
+<p><a id=Forecast></a>Forecast</p>
+<ul>
+<li>
+<p><strong>Name</strong>: Date
+<strong>Type</strong>: dateTime
+<strong>Cardinality</strong>: 1..1</p>
+</li>
+<li>
+<p><strong>Name</strong>: WeatherID
+<strong>Type</strong>: short
+<strong>Cardinality</strong>: 1..1</p>
+</li>
+<li>
+<p><strong>Name</strong>: Desciption
+<strong>Type</strong>: string
+<strong>Cardinality</strong>: 0..1</p>
+</li>
+<li>
+<p><strong>Name</strong>: Temperatures
+<strong>Type</strong>: temp
+<strong>Cardinality</strong>: 1..1</p>
+</li>
+<li>
+<p><strong>Name</strong>: ProbabilityOfPrecipiation
+<strong>Type</strong>: POP
+<strong>Cardinality</strong>: 1..1</p>
+</li>
+</ul>
+<p><a id=GetCityForecastByZIP></a>GetCityForecastByZIP</p>
+<ul>
+<li><strong>Name</strong>: ZIP
+<strong>Type</strong>: string
+<strong>Cardinality</strong>: 0..1</li>
+</ul>
+<p><a id=short></a>short
+<br /><br />
+<a id=GetCityWeatherByZIPResponse></a>GetCityWeatherByZIPResponse</p>
+<ul>
+<li><strong>Name</strong>: GetCityWeatherByZIPResult
+<strong>Type</strong>: WeatherReturn
+<strong>Cardinality</strong>: 1..1</li>
+</ul>
+<p><a id=ArrayOfWeatherDescription></a>ArrayOfWeatherDescription</p>
+<ul>
+<li><strong>Name</strong>: WeatherDescription
+<strong>Type</strong>: WeatherDescription
+<strong>Cardinality</strong>: 0..unbounded</li>
+</ul>
+<p><a id=ForecastReturn></a>ForecastReturn</p>
+<ul>
+<li>
+<p><strong>Name</strong>: Success
+<strong>Type</strong>: boolean
+<strong>Cardinality</strong>: 1..1</p>
+</li>
+<li>
+<p><strong>Name</strong>: ResponseText
+<strong>Type</strong>: string
+<strong>Cardinality</strong>: 0..1</p>
+</li>
+<li>
+<p><strong>Name</strong>: State
+<strong>Type</strong>: string
+<strong>Cardinality</strong>: 0..1</p>
+</li>
+<li>
+<p><strong>Name</strong>: City
+<strong>Type</strong>: string
+<strong>Cardinality</strong>: 0..1</p>
+</li>
+<li>
+<p><strong>Name</strong>: WeatherStationCity
+<strong>Type</strong>: string
+<strong>Cardinality</strong>: 0..1</p>
+</li>
+<li>
+<p><strong>Name</strong>: ForecastResult
+<strong>Type</strong>: ArrayOfForecast
+<strong>Cardinality</strong>: 0..1</p>
+</li>
+</ul>
+<p><a id=boolean></a>boolean
+<br /><br />
+<a id=dateTime></a>dateTime
+<br /><br />
+<a id=POP></a>POP</p>
+<ul>
+<li>
+<p><strong>Name</strong>: Nighttime
+<strong>Type</strong>: string
+<strong>Cardinality</strong>: 0..1</p>
+</li>
+<li>
+<p><strong>Name</strong>: Daytime
+<strong>Type</strong>: string
+<strong>Cardinality</strong>: 0..1</p>
+</li>
+</ul>
+<p><a id=WeatherReturn></a>WeatherReturn</p>
+<ul>
+<li>
+<p><strong>Name</strong>: Success
+<strong>Type</strong>: boolean
+<strong>Cardinality</strong>: 1..1</p>
+</li>
+<li>
+<p><strong>Name</strong>: ResponseText
+<strong>Type</strong>: string
+<strong>Cardinality</strong>: 0..1</p>
+</li>
+<li>
+<p><strong>Name</strong>: State
+<strong>Type</strong>: string
+<strong>Cardinality</strong>: 0..1</p>
+</li>
+<li>
+<p><strong>Name</strong>: City
+<strong>Type</strong>: string
+<strong>Cardinality</strong>: 0..1</p>
+</li>
+<li>
+<p><strong>Name</strong>: WeatherStationCity
+<strong>Type</strong>: string
+<strong>Cardinality</strong>: 0..1</p>
+</li>
+<li>
+<p><strong>Name</strong>: WeatherID
+<strong>Type</strong>: short
+<strong>Cardinality</strong>: 1..1</p>
+</li>
+<li>
+<p><strong>Name</strong>: Description
+<strong>Type</strong>: string
+<strong>Cardinality</strong>: 0..1</p>
+</li>
+<li>
+<p><strong>Name</strong>: Temperature
+<strong>Type</strong>: string
+<strong>Cardinality</strong>: 0..1</p>
+</li>
+<li>
+<p><strong>Name</strong>: RelativeHumidity
+<strong>Type</strong>: string
+<strong>Cardinality</strong>: 0..1</p>
+</li>
+<li>
+<p><strong>Name</strong>: Wind
+<strong>Type</strong>: string
+<strong>Cardinality</strong>: 0..1</p>
+</li>
+<li>
+<p><strong>Name</strong>: Pressure
+<strong>Type</strong>: string
+<strong>Cardinality</strong>: 0..1</p>
+</li>
+<li>
+<p><strong>Name</strong>: Visibility
+<strong>Type</strong>: string
+<strong>Cardinality</strong>: 0..1</p>
+</li>
+<li>
+<p><strong>Name</strong>: WindChill
+<strong>Type</strong>: string
+<strong>Cardinality</strong>: 0..1</p>
+</li>
+<li>
+<p><strong>Name</strong>: Remarks
+<strong>Type</strong>: string
+<strong>Cardinality</strong>: 0..1</p>
+</li>
+</ul>
+<p><a id=string></a>string
+<br /><br /></p>
+
+			</p>
+		</div>
+	</body>
+</html>
