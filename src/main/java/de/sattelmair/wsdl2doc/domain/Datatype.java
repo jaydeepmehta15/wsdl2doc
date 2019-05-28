@@ -1,6 +1,5 @@
 package de.sattelmair.wsdl2doc.domain;
 
-import de.sattelmair.wsdl2doc.Utils;
 import lombok.Data;
 
 import javax.xml.namespace.QName;

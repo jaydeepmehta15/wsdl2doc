@@ -2,7 +2,6 @@ package de.sattelmair.wsdl2doc.service.impl;
 
 import de.sattelmair.wsdl2doc.service.DocumentationOutputService;
 import htmlflow.StaticHtml;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.commonmark.node.Node;
 import org.commonmark.parser.Parser;

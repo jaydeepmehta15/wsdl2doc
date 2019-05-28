@@ -26,6 +26,8 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 public class MarkdownDocumentationOutputServiceImpl implements DocumentationOutputService {
 
+    private static final String LINE_BREAK = "\n<br />";
+
     private boolean doubleLink = true;
 
     @Override
@@ -79,10 +81,10 @@ public class MarkdownDocumentationOutputServiceImpl implements DocumentationOutp
             final List<Operation> operations = interfaceType.getOperations();
 
             stringBuilder.append(new Heading(name, 3)).append("\n");
-            stringBuilder.append(new BoldText("Address:")).append(" ").append(new Text(address)).append("\n<br />");
-            stringBuilder.append(new BoldText("Protocol:")).append(" ").append(new Text(protocol)).append("\n<br />");
+            stringBuilder.append(new BoldText("Address:")).append(" ").append(new Text(address)).append(LINE_BREAK);
+            stringBuilder.append(new BoldText("Protocol:")).append(" ").append(new Text(protocol)).append(LINE_BREAK);
             if ("HTTP".equals(protocol)) {
-                stringBuilder.append(new BoldText("Verb:")).append(" ").append(new Text(verb)).append("\n<br />");
+                stringBuilder.append(new BoldText("Verb:")).append(" ").append(new Text(verb)).append(LINE_BREAK);
             }
 
             stringBuilder.append("\n").append(new Heading("Operations", 4)).append("\n");
@@ -121,17 +123,17 @@ public class MarkdownDocumentationOutputServiceImpl implements DocumentationOutp
 
         final String operationDocumentation = createDocumentationFromDocumentationTag(operation.getDocumentation());
         if (!operationDocumentation.isEmpty()) {
-            stringBuilder.append(new BoldText("Description:")).append(" ").append(new Text(operationDocumentation)).append("\n<br />");
+            stringBuilder.append(new BoldText("Description:")).append(" ").append(new Text(operationDocumentation)).append(LINE_BREAK);
         }
 
         final String operationPattern = operation.getPattern().name();
-        stringBuilder.append(new BoldText("Pattern:")).append(" ").append(new Text(operationPattern)).append("\n<br />");
+        stringBuilder.append(new BoldText("Pattern:")).append(" ").append(new Text(operationPattern)).append(LINE_BREAK);
 
         final String inputDocumentation = createInputDocumentation(operation.getInput());
-        stringBuilder.append(new BoldText("Input:")).append(" ").append(new Text(inputDocumentation)).append("\n<br />");
+        stringBuilder.append(new BoldText("Input:")).append(" ").append(new Text(inputDocumentation)).append(LINE_BREAK);
 
         final String outputDocumentation = createOutputDocumentation(operation.getOutput());
-        stringBuilder.append(new BoldText("Output:")).append(" ").append(new Text(outputDocumentation)).append("\n<br />");
+        stringBuilder.append(new BoldText("Output:")).append(" ").append(new Text(outputDocumentation)).append(LINE_BREAK);
 
 
         final String faultsDocumentation = createFaulstDocumentation(operation.getFaults());
@@ -232,7 +234,7 @@ public class MarkdownDocumentationOutputServiceImpl implements DocumentationOutp
 
                 stringBuilder.append(new UnorderedList<>(parameters)).append("\n");
             } else {
-                stringBuilder.append("\n<br /><br />");
+                stringBuilder.append(LINE_BREAK + "<br />");
             }
 
             stringBuilder.append("\n");

@@ -27,7 +27,7 @@ public class WordDocumentationOutputServiceImpl implements DocumentationOutputSe
             final AlternativeFormatInputPart afiPart = new AlternativeFormatInputPart(new PartName("/hw.html"));
             afiPart.setBinaryData(documentationOutputService.generateDocumentation(serviceDescription));
             afiPart.setContentType(new ContentType("text/html"));
-            
+
             final Relationship altChunkRel = wordMLPackage.getMainDocumentPart().addTargetPart(afiPart);
             final CTAltChunk ac = Context.getWmlObjectFactory().createCTAltChunk();
             ac.setId(altChunkRel.getId() );
