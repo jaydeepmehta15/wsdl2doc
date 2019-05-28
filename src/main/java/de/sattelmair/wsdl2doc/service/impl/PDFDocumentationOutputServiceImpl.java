@@ -32,7 +32,7 @@ public class PDFDocumentationOutputServiceImpl implements DocumentationOutputSer
                     new ByteArrayInputStream(this.documentationOutputService.generateDocumentation(serviceDescription)));
             document.close();
         } catch (DocumentException | IOException e) {
-            log.error("ERROR while trying to create webservice documentation from WSDL!!");
+            log.error("ERROR while trying to create PDF based webservice documentation from WSDL!!");
         }
 
         return result.toByteArray();
