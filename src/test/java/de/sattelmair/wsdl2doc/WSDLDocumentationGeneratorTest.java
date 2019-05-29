@@ -68,7 +68,7 @@ public class WSDLDocumentationGeneratorTest {
     public void word_documentation_creator_test() throws WSDLImportException, IOException, InvalidFormatException {
         final WSDLImportService wsdlImportService = new WSDLImportServiceImpl();
         final Description description = wsdlImportService.readWSDLFromFile(WSDL_FILE_PATH);
-        final DocumentationOutputService documentationOutputService = new WordDocumentationOutputServiceImpl();
+        final DocumentationOutputService documentationOutputService = new WordDocumentationOutputServiceImpl(new HTMLDocumentationOutputServiceImpl(new MarkdownDocumentationOutputServiceImpl()));
 
         final XWPFDocument expected = new XWPFDocument(OPCPackage.open(new FileInputStream(new File("src/test/resources/de/sattelmair/wsdl2doc/output/output_word.docx"))));
         final XWPFDocument actual = new XWPFDocument(OPCPackage.open(new ByteArrayInputStream(documentationOutputService.generateDocumentation(description))));

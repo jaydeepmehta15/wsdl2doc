@@ -15,7 +15,7 @@ public class DocumentationOutputServiceFactory {
         switch (outputFormat) {
             case PDF: return new PDFDocumentationOutputServiceImpl(new HTMLDocumentationOutputServiceImpl(new MarkdownDocumentationOutputServiceImpl(false)));
             case HTML: return new HTMLDocumentationOutputServiceImpl(new MarkdownDocumentationOutputServiceImpl());
-            case WORD: return new WordDocumentationOutputServiceImpl();
+            case WORD: return new WordDocumentationOutputServiceImpl(new HTMLDocumentationOutputServiceImpl(new MarkdownDocumentationOutputServiceImpl()));
             case MARKDOWN: return new MarkdownDocumentationOutputServiceImpl();
             default: return new PDFDocumentationOutputServiceImpl(new HTMLDocumentationOutputServiceImpl(new MarkdownDocumentationOutputServiceImpl(false)));   //Should not happen! Default is PDF output.
         }

@@ -1,6 +1,7 @@
 package de.sattelmair.wsdl2doc.service.impl;
 
 import de.sattelmair.wsdl2doc.service.DocumentationOutputService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.docx4j.jaxb.Context;
 import org.docx4j.openpackaging.contenttype.ContentType;
@@ -15,17 +16,19 @@ import org.ow2.easywsdl.wsdl.api.Description;
 import java.io.ByteArrayOutputStream;
 
 @Slf4j
+@RequiredArgsConstructor
 public class WordDocumentationOutputServiceImpl implements DocumentationOutputService {
+
+    private final DocumentationOutputService documentationOutputService;
 
     @Override
     public byte[] generateDocumentation(Description serviceDescription) {
         final ByteArrayOutputStream out = new ByteArrayOutputStream();
-        final DocumentationOutputService documentationOutputService = new HTMLDocumentationOutputServiceImpl(new MarkdownDocumentationOutputServiceImpl());
 
         try {
             final WordprocessingMLPackage wordMLPackage = WordprocessingMLPackage.createPackage();
             final AlternativeFormatInputPart afiPart = new AlternativeFormatInputPart(new PartName("/hw.html"));
-            afiPart.setBinaryData(documentationOutputService.generateDocumentation(serviceDescription));
+            afiPart.setBinaryData(this.documentationOutputService.generateDocumentation(serviceDescription));
             afiPart.setContentType(new ContentType("text/html"));
 
             final Relationship altChunkRel = wordMLPackage.getMainDocumentPart().addTargetPart(afiPart);
