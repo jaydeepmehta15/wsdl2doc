@@ -23,11 +23,11 @@ public class CommandLineInputValidatorImpl implements CommandLineInputValidator 
         final String destinationFilePath = commandLine.getOptionValue(CommandLineConstants.OUTPUT_PATH).trim();
 
         if (!UrlValidator.getInstance().isValid(sourceFilePathOrURL ) && !new File(sourceFilePathOrURL ).exists()) {
-            throw new ValidationException("Neither valid URL nor valid file path was passed!");
+            throw new ValidationException("ERROR: Neither valid URL nor valid file path was passed!");
         }
 
         if (!canWriteFile(destinationFilePath)) {
-            throw new ValidationException(MessageFormat.format("Can not write file to given file path {0}!!", commandLine.getOptionValue(CommandLineConstants.OUTPUT_PATH)));
+            throw new ValidationException(MessageFormat.format("ERROR: Can not write file to given file path {0}!!", commandLine.getOptionValue(CommandLineConstants.OUTPUT_PATH)));
         }
 
         return commandLine;
