@@ -7,6 +7,7 @@ import de.sattelmair.wsdl2doc.service.CommandLineInputValidator;
 import de.sattelmair.wsdl2doc.service.WSDL2DocService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.cli.*;
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.validator.routines.UrlValidator;
 import org.ow2.easywsdl.wsdl.api.WSDLImportException;
 
@@ -30,7 +31,7 @@ public class ApplicationMainProcessorServiceImpl implements ApplicationMainProce
 
             final String sourceFilePathOrURL = commandLine.getOptionValue(CommandLineConstants.INPUT_SOURCE_OPTION).trim();
             final String outputFilePath = commandLine.getOptionValue(CommandLineConstants.OUTPUT_PATH).trim();
-            final String outputFormat = commandLine.getOptionValue(CommandLineConstants.OUTPUT_FORMAT).trim();
+            final String outputFormat = StringUtils.defaultString(commandLine.getOptionValue(CommandLineConstants.OUTPUT_FORMAT)).trim();
 
             log.debug("Generating documentation...");
             final byte[] generatedDocumentation = generateDocumentationOutput(sourceFilePathOrURL, outputFormat);
@@ -61,7 +62,7 @@ public class ApplicationMainProcessorServiceImpl implements ApplicationMainProce
     }
 
     private String createFilePath(final String directory, final String extension) {
-        return directory + File.separator + "generated_documentation_" + System.currentTimeMillis() + "." + extension;
+        return directory + (directory.endsWith("/") ? "" : File.separator) + "generated_documentation_" + System.currentTimeMillis() + "." + extension;
     }
 
 }
