@@ -5,6 +5,7 @@ import de.sattelmair.wsdl2doc.domain.OutputFormat;
 import de.sattelmair.wsdl2doc.service.ApplicationMainProcessorService;
 import de.sattelmair.wsdl2doc.service.CommandLineInputValidator;
 import de.sattelmair.wsdl2doc.service.WSDL2DocService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.cli.*;
 import org.apache.commons.validator.routines.UrlValidator;
 import org.ow2.easywsdl.wsdl.api.WSDLImportException;
@@ -14,6 +15,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
+@Slf4j
 public class ApplicationMainProcessorServiceImpl implements ApplicationMainProcessorService {
 
     @Override
@@ -22,12 +24,22 @@ public class ApplicationMainProcessorServiceImpl implements ApplicationMainProce
         final CommandLine commandLine;
 
         try {
+            log.debug("Validating command line arguments...");
             commandLine = commandLineInputValidator.parseInput(args);
-            final String outputFormat = commandLine.getOptionValue(CommandLineConstants.OUTPUT_FORMAT);
-            final String sourceFilePathOrURL = commandLine.getOptionValue(CommandLineConstants.INPUT_SOURCE_OPTION);
+            log.debug("Command line arguments valid");
 
+            final String sourceFilePathOrURL = commandLine.getOptionValue(CommandLineConstants.INPUT_SOURCE_OPTION).trim();
+            final String outputFilePath = commandLine.getOptionValue(CommandLineConstants.OUTPUT_PATH).trim();
+            final String outputFormat = commandLine.getOptionValue(CommandLineConstants.OUTPUT_FORMAT).trim();
+
+            log.debug("Generating documentation...");
             final byte[] generatedDocumentation = generateDocumentationOutput(sourceFilePathOrURL, outputFormat);
-            Files.write(new File(createFilePath(commandLine.getOptionValue(CommandLineConstants.OUTPUT_PATH), OutputFormat.getExtension(outputFormat))).toPath(), generatedDocumentation);
+            log.debug("Documentation generated");
+
+            final String destinationFilePath = createFilePath(outputFilePath, OutputFormat.getExtension(outputFormat));
+            log.debug("Saving documentation to {} ...", destinationFilePath);
+            Files.write(new File(destinationFilePath).toPath(), generatedDocumentation);
+            log.debug("Documentation saved");
         }  catch (ParseException parseException) {
             throw new IllegalArgumentException("ERROR: Unable to parse command-line arguments due to:", parseException);
         } catch (ValidationException validationException) {
