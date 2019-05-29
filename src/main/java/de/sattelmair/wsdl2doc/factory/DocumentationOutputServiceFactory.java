@@ -12,6 +12,10 @@ public class DocumentationOutputServiceFactory {
     private DocumentationOutputServiceFactory() {}
 
     public static DocumentationOutputService createDocumentationOutputService(final OutputFormat outputFormat) {
+        if(outputFormat == null) {
+            return new PDFDocumentationOutputServiceImpl(new HTMLDocumentationOutputServiceImpl(new MarkdownDocumentationOutputServiceImpl(false)));
+        }
+
         switch (outputFormat) {
             case PDF: return new PDFDocumentationOutputServiceImpl(new HTMLDocumentationOutputServiceImpl(new MarkdownDocumentationOutputServiceImpl(false)));
             case HTML: return new HTMLDocumentationOutputServiceImpl(new MarkdownDocumentationOutputServiceImpl());
