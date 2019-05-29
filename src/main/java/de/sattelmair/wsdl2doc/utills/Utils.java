@@ -5,6 +5,7 @@ import de.sattelmair.wsdl2doc.domain.Datatype;
 import org.ow2.easywsdl.schema.api.*;
 import org.ow2.easywsdl.wsdl.api.Description;
 import org.ow2.easywsdl.wsdl.api.Part;
+import org.ow2.easywsdl.wsdl.api.Types;
 import org.ow2.easywsdl.wsdl.impl.wsdl11.DescriptionImpl;
 import org.ow2.easywsdl.wsdl.impl.wsdl11.MessageImpl;
 
@@ -19,43 +20,47 @@ public class Utils {
 
     public static Set<Datatype> getDatatypes(final Description description, final Set<QName> messageParts, final Set<Datatype> datatypes) {
         for(final QName messagePart : messageParts) {
-            final List<Schema> schemas = description.getTypes().getSchemas();
+            final Types types = description.getTypes();
 
-            for(final Schema schema : schemas) {
-                Type type = schema.getType(messagePart);
+            if(types != null) {
+                final List<Schema> schemas = types.getSchemas();
 
-                // In case of complexType tag inside element tag
-                if (type == null) {
-                    type = schema.getElement(messagePart).getType();
-                }
+                for (final Schema schema : schemas) {
+                    Type type = schema.getType(messagePart);
 
-                final Datatype datatype = new Datatype(messagePart);
-
-                if (type instanceof ComplexType) {
-                    final ComplexType complexType = (ComplexType) type;
-
-                    if (complexType.getSequence() != null) {
-                        final List<Element> elements = complexType.getSequence().getElements();
-
-                        for (final Element complexTypeElement : elements) {
-                            datatype.getElements().add(createComplexDatatypeElement(complexTypeElement));
-                        }
-
-                        datatypes.add(datatype);
-                    } else if(complexType.getAll() != null) {
-                        final All all = complexType.getAll();
-                        final List<Element> elements = all.getElements();
-
-                        for (final Element complexTypeElement : elements) {
-                            datatype.getElements().add(createComplexDatatypeElement(complexTypeElement));
-                        }
-
-                        datatypes.add(datatype);
-                    } else {
-                        datatypes.add(datatype);
+                    // In case of complexType tag inside element tag
+                    if (type == null) {
+                        type = schema.getElement(messagePart).getType();
                     }
-                } else {
-                    datatypes.add(new Datatype(type.getQName()));
+
+                    final Datatype datatype = new Datatype(messagePart);
+
+                    if (type instanceof ComplexType) {
+                        final ComplexType complexType = (ComplexType) type;
+
+                        if (complexType.getSequence() != null) {
+                            final List<Element> elements = complexType.getSequence().getElements();
+
+                            for (final Element complexTypeElement : elements) {
+                                datatype.getElements().add(createComplexDatatypeElement(complexTypeElement));
+                            }
+
+                            datatypes.add(datatype);
+                        } else if (complexType.getAll() != null) {
+                            final All all = complexType.getAll();
+                            final List<Element> elements = all.getElements();
+
+                            for (final Element complexTypeElement : elements) {
+                                datatype.getElements().add(createComplexDatatypeElement(complexTypeElement));
+                            }
+
+                            datatypes.add(datatype);
+                        } else {
+                            datatypes.add(datatype);
+                        }
+                    } else {
+                        datatypes.add(new Datatype(type.getQName()));
+                    }
                 }
             }
         }
