@@ -1,4 +1,4 @@
-package de.sattelmair.wsdl2doc;
+package de.sattelmair.wsdl2doc.utills;
 
 import de.sattelmair.wsdl2doc.domain.ComplexDatatypeElement;
 import de.sattelmair.wsdl2doc.domain.Datatype;

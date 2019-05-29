@@ -15,7 +15,7 @@ import java.net.URL;
 public class WSDL2DocServiceImpl implements WSDL2DocService {
 
     @Override
-    public byte[] generateDocumentationFromURL(final String url, final String outputFormat) throws WSDLImportException, UnsupportedDataTypeException {
+    public byte[] generateDocumentationFromURL(final String url, final String outputFormat) throws WSDLImportException {
         final WSDLImportService wsdlImportService = new WSDLImportServiceImpl();
         final Description description = wsdlImportService.readWSDLFromURL(url);
 
@@ -26,7 +26,7 @@ public class WSDL2DocServiceImpl implements WSDL2DocService {
     }
 
     @Override
-    public byte[] generateDocumentationFromURL(final URL url, final String outputFormat) throws WSDLImportException, UnsupportedDataTypeException {
+    public byte[] generateDocumentationFromURL(final URL url, final String outputFormat) throws WSDLImportException {
         final WSDLImportService wsdlImportService = new WSDLImportServiceImpl();
         final Description description = wsdlImportService.readWSDLFromURL(url);
 
@@ -37,7 +37,7 @@ public class WSDL2DocServiceImpl implements WSDL2DocService {
     }
 
     @Override
-    public byte[] generateDocumentationFromFile(final String filePath, final String outputFormat) throws WSDLImportException, UnsupportedDataTypeException {
+    public byte[] generateDocumentationFromFile(final String filePath, final String outputFormat) throws WSDLImportException {
         final WSDLImportService wsdlImportService = new WSDLImportServiceImpl();
         final Description description = wsdlImportService.readWSDLFromFile(filePath);
 
@@ -48,7 +48,7 @@ public class WSDL2DocServiceImpl implements WSDL2DocService {
     }
 
     @Override
-    public byte[] generateDocumentationFromFile(final File file, final String outputFormat) throws WSDLImportException, UnsupportedDataTypeException {
+    public byte[] generateDocumentationFromFile(final File file, final String outputFormat) throws WSDLImportException {
         final WSDLImportService wsdlImportService = new WSDLImportServiceImpl();
         final Description description = wsdlImportService.readWSDLFromFile(file);
 

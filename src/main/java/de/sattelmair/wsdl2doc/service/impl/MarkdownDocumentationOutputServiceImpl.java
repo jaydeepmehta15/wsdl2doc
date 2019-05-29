@@ -1,6 +1,6 @@
 package de.sattelmair.wsdl2doc.service.impl;
 
-import de.sattelmair.wsdl2doc.Utils;
+import de.sattelmair.wsdl2doc.utills.Utils;
 import de.sattelmair.wsdl2doc.domain.Datatype;
 import de.sattelmair.wsdl2doc.service.DocumentationOutputService;
 import lombok.AllArgsConstructor;
