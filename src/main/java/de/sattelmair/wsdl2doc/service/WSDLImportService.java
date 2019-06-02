@@ -15,4 +15,6 @@ public interface WSDLImportService {
     Description readWSDLFromURL(final String url) throws WSDLImportException;
 
     Description readWSDLFromURL(final URL url) throws WSDLImportException;
+
+    Description readWSDLFromStream(final byte[] content) throws WSDLImportException;
 }

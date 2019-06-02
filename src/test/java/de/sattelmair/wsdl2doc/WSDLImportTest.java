@@ -7,8 +7,10 @@ import org.junit.Test;
 import org.ow2.easywsdl.wsdl.api.WSDLImportException;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Files;
 
 public class WSDLImportTest {
 
@@ -61,6 +63,12 @@ public class WSDLImportTest {
     public void testWSDLImportFromURLString() throws WSDLImportException {
         final WSDLImportService wsdlImportService = new WSDLImportServiceImpl();
         Assert.assertNotNull(wsdlImportService.readWSDLFromURL(WSDL_URL_PATH));
+    }
+
+    @Test
+    public void testWSDLImportFromStream() throws WSDLImportException, IOException {
+        final WSDLImportService wsdlImportService = new WSDLImportServiceImpl();
+        Assert.assertNotNull(wsdlImportService.readWSDLFromStream(Files.readAllBytes(new File(WSDL_FILE_PATH).toPath())));
     }
 
 }

@@ -56,4 +56,16 @@ public class WSDLImportServiceImpl implements WSDLImportService {
             throw new WSDLImportException(e);
         }
     }
+
+    @Override
+    public Description readWSDLFromStream(final byte[] content) throws WSDLImportException {
+        try {
+            final WSDLReader wsdlReader = WSDLFactory.newInstance().newWSDLReader();
+            return wsdlReader.read(new InputSource(new ByteArrayInputStream(content)));
+        } catch (WSDLException | IOException | URISyntaxException e) {
+            log.error(e.getLocalizedMessage());
+
+            throw new WSDLImportException(e);
+        }
+    }
 }
