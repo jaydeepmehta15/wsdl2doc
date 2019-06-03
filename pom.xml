@@ -4,7 +4,7 @@
 
     <groupId>com.github.eriksattelmair</groupId>
     <artifactId>wsdl2doc</artifactId>
-    <version>1.3</version>
+    <version>1.4-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>${project.groupId}:${project.artifactId}</name>
@@ -31,7 +31,7 @@
         <url>https://github.com/ErikSattelmair/wsdl2doc</url>
         <connection>scm:git:git:github.com/ErikSattelmair/wsdl2doc.git</connection>
         <developerConnection>scm:git:git:github.com/ErikSattelmair/wsdl2doc.git</developerConnection>
-        <tag>1.3</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <distributionManagement>
