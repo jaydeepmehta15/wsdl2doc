@@ -1,3 +1,4 @@
+###Overview
 This project is about to generate a documentation in different 
 output formats (PDF, Word, HTML and Markdown) from a WSDL source (file or remote resource).
 
@@ -9,3 +10,13 @@ If you tend to use it via the CMD, provide the following options with arguments:
 -f <output format> (e.g. PDF, HTML, Word or Markdown) (optional)
   
 If you rather want to use it programatically, you can use WSDL2DocService.java, which provides an abstraction layer and high level nethods.
+
+### Maven
+You can download the sources via Maven
+```
+<dependency>
+  <groupId>net.steppschuh.markdowngenerator</groupId>
+  <artifactId>markdowngenerator</artifactId>
+  <version>1.3.1.1</version>
+</dependency>
+```
