@@ -15,8 +15,8 @@ If you rather want to use it programatically, you can use WSDL2DocService.java, 
 You can download the sources via Maven
 ```
 <dependency>
-  <groupId>net.steppschuh.markdowngenerator</groupId>
-  <artifactId>markdowngenerator</artifactId>
-  <version>1.3.1.1</version>
+  <groupId>com.github.eriksattelmair</groupId>
+  <artifactId>wsdl2doc</artifactId>
+  <version>1.4</version>
 </dependency>
 ```
