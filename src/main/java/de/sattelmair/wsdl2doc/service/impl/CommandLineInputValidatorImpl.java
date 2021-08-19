@@ -66,6 +66,7 @@ public class CommandLineInputValidatorImpl implements CommandLineInputValidator 
         final boolean isOperatingSystemWindows = SystemUtils.IS_OS_WINDOWS;
         final File file = new File(filePath);
 
+        /* #Jaydeep skipping validation
         if(isOperatingSystemWindows) {
             try {
                 new FileOutputStream(file, true).close();
@@ -77,6 +78,7 @@ public class CommandLineInputValidatorImpl implements CommandLineInputValidator 
                 return false;
             }
         }
+        */
 
         return true;
     }

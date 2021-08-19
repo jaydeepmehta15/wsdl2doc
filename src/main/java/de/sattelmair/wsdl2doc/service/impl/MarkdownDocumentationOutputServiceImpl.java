@@ -45,9 +45,11 @@ public class MarkdownDocumentationOutputServiceImpl implements DocumentationOutp
 
         stringBuilder.append("\n");
 
+        /* CREATING ERROR HERE #Jaydeep 
         final Set<Datatype> datatypes = Utils.getDatatypes(serviceDescription, Utils.getMeesageQNames(serviceDescription), new HashSet<>());
         stringBuilder.append(createDatatypesDocumentation(datatypes));
-
+		*/
+		
         return stringBuilder.toString().getBytes();
     }
 
