@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 public class MarkdownDocumentationOutputServiceImpl implements DocumentationOutputService {
 
-    private static final String LINE_BREAK = "\n<br />";
+    private static final String LINE_BREAK = "\n";
 
     private boolean doubleLink = true;
 
@@ -41,9 +41,9 @@ public class MarkdownDocumentationOutputServiceImpl implements DocumentationOutp
 
         stringBuilder.append("\n");
 
-        stringBuilder.append(createMessageInformation(serviceDescription));
+        //stringBuilder.append(createMessageInformation(serviceDescription));
 
-        stringBuilder.append("\n");
+        //stringBuilder.append("\n");
 
         /* CREATING ERROR HERE #Jaydeep 
         final Set<Datatype> datatypes = Utils.getDatatypes(serviceDescription, Utils.getMeesageQNames(serviceDescription), new HashSet<>());
@@ -89,10 +89,11 @@ public class MarkdownDocumentationOutputServiceImpl implements DocumentationOutp
                 stringBuilder.append(new BoldText("Verb:")).append(" ").append(new Text(verb)).append(LINE_BREAK);
             }
 
-            stringBuilder.append("\n").append(new Heading("Operations", 4)).append("\n");
+            stringBuilder.append("\n\n\n").append(new Heading("Operations", 2)).append("\n");
 
             for (final Operation operation : operations) {
                 stringBuilder.append(createOperationDocumentation(operation));
+                stringBuilder.append("\n\n");
             }
         }
 
@@ -121,7 +122,7 @@ public class MarkdownDocumentationOutputServiceImpl implements DocumentationOutp
         final StringBuilder stringBuilder = new StringBuilder();
 
         final String operationName = operation.getQName().getLocalPart();
-        stringBuilder.append(new Heading(operationName, 5)).append("\n");
+        stringBuilder.append(new Heading(operationName, 3)).append("\n");
 
         final String operationDocumentation = createDocumentationFromDocumentationTag(operation.getDocumentation());
         if (!operationDocumentation.isEmpty()) {
